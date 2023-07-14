@@ -1,11 +1,11 @@
-import { mount } from "marketing/MarketingApp";
+import { mount } from "auth/AuthApp";
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Used to render the marketing app
 // as directly calling the mount function in the App.js
 // is not possible.
-export default () => {
+export default ({ onSignIn }) => {
   const ref = useRef(null);
   const history= useHistory();
 
@@ -18,6 +18,7 @@ export default () => {
           history.push(nextPathName);
         }
       },
+      onSignIn,
       initialPath: history.location.pathname,
     });
 
